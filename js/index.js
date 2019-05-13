@@ -53,20 +53,8 @@ anchor.forEach((e, p) => {
   e.textContent = siteContent.nav[`nav-item-${p + 1}`];
 })
 
-const navNews = document.createElement("a");
-const navJobs = document.createElement("a");
 
-navNews.textContent = additionalNavigation.nav.news;
-navJobs.textContent = additionalNavigation.nav.jobs;
-const navigation = document.querySelector("header nav");
-navigation.appendChild(navNews);
-navigation.prepend(navJobs);
-anchor.forEach(e => e.style.color = "green");
-navNews.style.color = "green";
-navNews.style.cursor = "pointer";
-navJobs.style.color = "green";
-navJobs.style.cursor = "pointer";
-
+additionalNav()
 buildCallToAction()
 buildMainContent()
 buildContact()
@@ -157,3 +145,22 @@ document.querySelector("button").addEventListener("click", () => {
     document.querySelector(".cta img").alt = "Image of code snippets across the screen";
   }
 })
+
+function additionalNav() {
+
+  const navNews = document.createElement("a");
+  const navJobs = document.createElement("a");
+
+  navNews.textContent = additionalNavigation.nav.news;
+  navJobs.textContent = additionalNavigation.nav.jobs;
+
+  const navigation = document.querySelector("header nav");
+
+  navigation.appendChild(navNews);
+  navigation.prepend(navJobs);
+  anchor.forEach(e => e.style.color = "green");
+  navNews.style.color = "green";
+  navNews.style.cursor = "pointer";
+  navJobs.style.color = "green";
+  navJobs.style.cursor = "pointer";
+}
