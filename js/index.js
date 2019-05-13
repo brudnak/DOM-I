@@ -38,5 +38,66 @@ const siteContent = {
 };
 
 // Example: Update the img src for the logo
-let logo = document.getElementById("logo-img");
-logo.setAttribute('src', siteContent["nav"]["img-src"])
+const logo = document.getElementById("logo-img");
+logo.setAttribute('src', siteContent["nav"]["img-src"]);
+
+const anchor = document.querySelectorAll("header nav a");
+anchor.forEach((e, p) => {
+  e.textContent = siteContent.nav[`nav-item-${p + 1}`];
+})
+
+buildCallToAction()
+buildMainContent()
+
+
+function buildCallToAction() {
+  const { cta: { h1, button }, cta } = siteContent;
+  document.querySelector(".cta h1").textContent = h1;
+  document.querySelector(".cta button ").textContent = button;
+  document.querySelector(".cta img").src = cta["img-src"];
+}
+
+function buildMainContent() {
+  h4Main()
+  paraMain()
+  mainImg()
+
+}
+
+function h4Main() {
+  h4Main = document.querySelectorAll(".main-content h4")
+  const { "main-content": { 
+    "features-h4": h4Features, 
+    "about-h4": h4About,
+    "services-h4": h4Services,
+    "product-h4": h4Product,
+    "vision-h4": h4Vision
+  } } = siteContent;
+  h4Main[0].textContent = h4Features;
+  h4Main[1].textContent = h4About;
+  h4Main[2].textContent = h4Services;
+  h4Main[3].textContent = h4Product;
+  h4Main[4].textContent = h4Vision;
+}
+
+function paraMain() {
+  pMain = document.querySelectorAll(".main-content p")
+  const { "main-content": { 
+    "features-content": paraFeatures,
+    "about-content": paraAbout,
+    "services-content": paraServices,
+    "product-content": paraProduct,
+    "vision-content": paraVision
+   } } = siteContent;
+   pMain[0].textContent = paraFeatures;
+   pMain[1].textContent = paraAbout;
+   pMain[2].textContent = paraServices;
+   pMain[3].textContent = paraProduct;
+   pMain[4].textContent = paraVision;
+}
+
+function mainImg() {
+  const { "main-content": { "middle-img-src": img } } = siteContent
+  const middleImage = document.querySelector("#middle-img");
+  middleImage.src = img
+}
