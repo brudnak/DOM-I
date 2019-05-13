@@ -9,7 +9,7 @@ const siteContent = {
     "img-src": "img/logo.png"
   },
   "cta": {
-    "h1": "DOM Is Awesome",
+    "h1": "DOM<br>Is<br>Awesome",
     "button": "Get Started",
     "img-src": "img/header-img.png"
   },
@@ -28,13 +28,20 @@ const siteContent = {
   },
   "contact": {
     "contact-h4" : "Contact",
-    "address" : "123 Way 456 Street Somewhere, USA",
+    "address" : "123 Way 456 Street<br>Somewhere, USA",
     "phone" : "1 (888) 888-8888",
     "email" : "sales@greatidea.io",
   },
   "footer": {
     "copyright" : "Copyright Great Idea! 2018"
   },
+};
+
+const additionalNavigation = {
+  nav: {
+    news: "News",
+    jobs: "Jobs"
+  }
 };
 
 // Example: Update the img src for the logo
@@ -46,13 +53,26 @@ anchor.forEach((e, p) => {
   e.textContent = siteContent.nav[`nav-item-${p + 1}`];
 })
 
+const navNews = document.createElement("a");
+const navJobs = document.createElement("a");
+
+navNews.textContent = additionalNavigation.nav.news;
+navJobs.textContent = additionalNavigation.nav.jobs;
+const navigation = document.querySelector("header nav");
+navigation.appendChild(navNews);
+navigation.prepend(navJobs);
+anchor.forEach(e => e.style.color = "green");
+navNews.style.color = "green";
+navJobs.style.color = "green";
+
 buildCallToAction()
 buildMainContent()
-
+buildContact()
+buildFooter()
 
 function buildCallToAction() {
   const { cta: { h1, button }, cta } = siteContent;
-  document.querySelector(".cta h1").textContent = h1;
+  document.querySelector(".cta h1").innerHTML = h1;
   document.querySelector(".cta button ").textContent = button;
   document.querySelector(".cta img").src = cta["img-src"];
 }
@@ -100,4 +120,27 @@ function mainImg() {
   const { "main-content": { "middle-img-src": img } } = siteContent
   const middleImage = document.querySelector("#middle-img");
   middleImage.src = img
+}
+
+function buildContact() {
+  const contactHeading = document.querySelector(".contact h4");
+  const pContact = document.querySelectorAll(".contact p")
+  const { contact: { 
+    "contact-h4": h4Contact, address, phone, email
+   } } = siteContent;
+
+   contactHeading.textContent = h4Contact;
+
+   pContact[0].innerHTML = address;
+   pContact[1].textContent = phone;
+   pContact[2].textContent = email;
+}
+
+function buildFooter() {
+  const siteFooter = document.querySelector("footer")
+  const footerPara = document.querySelector("footer p");
+  const { footer: { copyright } } = siteContent;
+  footerPara.textContent = copyright;
+  const lineBreak = document.createElement("br");
+  siteFooter.appendChild(lineBreak);
 }
