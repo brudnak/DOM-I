@@ -63,7 +63,9 @@ navigation.appendChild(navNews);
 navigation.prepend(navJobs);
 anchor.forEach(e => e.style.color = "green");
 navNews.style.color = "green";
+navNews.style.cursor = "pointer";
 navJobs.style.color = "green";
+navJobs.style.cursor = "pointer";
 
 buildCallToAction()
 buildMainContent()
