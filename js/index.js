@@ -145,8 +145,8 @@ function buildFooter() {
   siteFooter.appendChild(lineBreak);
 }
 
-  document.querySelector("button").addEventListener("click", () => {
-    checkedAlt = document.querySelector(".cta img").alt
+document.querySelector("button").addEventListener("click", () => {
+  checkedAlt = document.querySelector(".cta img").alt
   if (checkedAlt === "Image of code snippets across the screen") {
     document.querySelector(".cta img").src = "img/dan.png";
     document.querySelector(".cta img").alt = "Fire cat!";
@@ -154,4 +154,4 @@ function buildFooter() {
     document.querySelector(".cta img").src = "img/header-img.png";
     document.querySelector(".cta img").alt = "Image of code snippets across the screen";
   }
-  })
+})
